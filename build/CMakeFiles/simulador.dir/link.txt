@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/simulador.dir/link.d CMakeFiles/simulador.dir/src/main.cpp.o CMakeFiles/simulador.dir/src/CPU.cpp.o CMakeFiles/simulador.dir/src/LeitorDeArquivos.cpp.o -o simulador
