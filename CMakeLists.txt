@@ -10,4 +10,5 @@ add_executable(simulador
     src/main.cpp
     src/CPU.cpp
     src/LeitorDeArquivos.cpp
+    src/DecodificadorDeInstrucao.cpp
 )

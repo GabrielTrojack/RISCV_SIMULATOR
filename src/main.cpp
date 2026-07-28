@@ -1,14 +1,14 @@
 #include <iostream>
 
-#include "CPU.h"
-#include "LeitorDeArquivos.h"
+#include "../include/CPU.h"
+#include "../include/LeitorDeArquivos.h"
+#include "../include/DecodificadorDeInstrucao.h"
 
 using namespace std;
 
 int main() {
     CPU cpu;
-    LeitorDeArquivos leitor;
-
-
+    LeitorDeArquivos leitorDeArquivos;
     return 0;
 }
+/* DecodificadorDeInstrucao.cpp LeitorDeArquivos.cpp CPU.cpp*/

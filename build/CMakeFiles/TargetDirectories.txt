@@ -1,3 +1,0 @@
-/home/trojack/Documentos/repositories/RiscVSimulator/build/CMakeFiles/simulador.dir
-/home/trojack/Documentos/repositories/RiscVSimulator/build/CMakeFiles/edit_cache.dir
-/home/trojack/Documentos/repositories/RiscVSimulator/build/CMakeFiles/rebuild_cache.dir
