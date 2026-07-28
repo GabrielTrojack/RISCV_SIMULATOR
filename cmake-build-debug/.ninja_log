@@ -1,0 +1,12 @@
+# ninja log v6
+82	615	8069737879904435	CMakeFiles/simulador.dir/src/DecodificadorDeInstrucao.cpp.obj	a9fdd200c899bca1
+70	630	8069737879784466	CMakeFiles/simulador.dir/src/CPU.cpp.obj	70e9257a1ea9a946
+63	640	8069737879704453	CMakeFiles/simulador.dir/src/main.cpp.obj	e72c15b6698fe4c0
+75	718	8069737879834457	CMakeFiles/simulador.dir/src/LeitorDeArquivos.cpp.obj	b922a2e011c31500
+718	1098	8069737886265191	simulador.exe	ac9fd68eaaeed15e
+12	466	8069739740567835	CMakeFiles/simulador.dir/src/main.cpp.obj	e72c15b6698fe4c0
+466	583	8069739745112462	simulador.exe	ac9fd68eaaeed15e
+14	451	8069741835766218	CMakeFiles/simulador.dir/src/main.cpp.obj	e72c15b6698fe4c0
+453	577	8069741840157987	simulador.exe	ac9fd68eaaeed15e
+19	1303	8069747493268751	CMakeFiles/simulador.dir/src/main.cpp.obj	e72c15b6698fe4c0
+1304	2083	8069747506113954	simulador.exe	ac9fd68eaaeed15e

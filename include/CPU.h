@@ -2,6 +2,7 @@
 #define CPU_H
 
 #include <vector>
+#include "DecodificadorDeInstrucao.h"
 using namespace std;
 
 class CPU {
@@ -27,6 +28,7 @@ public:
 
     int lerMemoria(int address);
     void escreverMemoria(int address,int val);
+    void executaInstrucao(const InstrucaoDecodificada& inst);
 
 };
 
