@@ -9,6 +9,6 @@ using namespace std;
 int main() {
     CPU cpu;
     LeitorDeArquivos leitorDeArquivos;
+    
     return 0;
 }
-/* DecodificadorDeInstrucao.cpp LeitorDeArquivos.cpp CPU.cpp*/

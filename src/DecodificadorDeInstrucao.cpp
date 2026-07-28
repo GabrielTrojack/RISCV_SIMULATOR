@@ -9,9 +9,19 @@ int imm) {
     this->imm = imm;
 }
 
+void DecodificadorDeInstrucao::immNegativo(int &imm, int j) {
+    if (imm & (1<<j)) {
+        while(j <= 31) {
+            imm |= (1<<j);
+            j++;
+        }
+    }
+}
+
 int DecodificadorDeInstrucao::binParaDec(string instrucao, int inicio, int fim, int maskstart) {
     int mask = 0;
-    for(int i = inicio, j = maskstart; i <= fim; i++, j++) {
+    int j = maskstart;
+    for(int i = inicio; i <= fim; i++, j++) {
         if (instrucao[i]=='1') mask |= (1<<j);
     }
 
@@ -19,13 +29,11 @@ int DecodificadorDeInstrucao::binParaDec(string instrucao, int inicio, int fim, 
 }
 
 InstrucaoDecodificada DecodificadorDeInstrucao::decodificar(string instrucao) {
-    cout << instrucao.size() << endl;
     if (instrucao.size()!=32) {
         throw length_error("Tamanho da instrução não é de 32 bits");
     }
 
     reverse(instrucao.begin(), instrucao.end());
-    cout << 2 << endl;
 
     int opcode = binParaDec(instrucao, 0, 6, 0);
 
@@ -46,11 +54,11 @@ InstrucaoDecodificada DecodificadorDeInstrucao::decodificar(string instrucao) {
         return InstrucaoDecodificada(nome, rd, rs1, rs2, -1);
     }
     else if (opcode == OPCODE_OP_IMM) { // addi
-        cout << 3 << endl;
         int rs1 = binParaDec(instrucao, 15, 19, 0);
         int rd = binParaDec(instrucao, 7, 11, 0);
         int imm = binParaDec(instrucao, 20, 31, 0);
-        cout << 4 << endl;
+
+        immNegativo(imm, 11);
 
         return InstrucaoDecodificada("addi", rd, rs1, -1, imm);
     }
@@ -58,6 +66,8 @@ InstrucaoDecodificada DecodificadorDeInstrucao::decodificar(string instrucao) {
         int rs1 = binParaDec(instrucao, 15, 19, 0);
         int rd = binParaDec(instrucao, 7, 11, 0);
         int imm = binParaDec(instrucao, 20, 31, 0);
+
+        immNegativo(imm, 11);
 
         return InstrucaoDecodificada("lw", rd, rs1, -1, imm);
     }
@@ -69,17 +79,21 @@ InstrucaoDecodificada DecodificadorDeInstrucao::decodificar(string instrucao) {
 
         int imm = imm04 | imm511;
 
+        immNegativo(imm, 11);
+
         return InstrucaoDecodificada("sw", -1, rs1, rs2, imm);
     }
     else if (opcode == OPCODE_BRANCH) { // beq, bne
         int rs1 = binParaDec(instrucao, 15, 19, 0);
-        int rs2 = binParaDec(instrucao, 20, 14, 0);
+        int rs2 = binParaDec(instrucao, 20, 24, 0);
         int imm12 = binParaDec(instrucao, 31, 31, 12);
         int imm510 = binParaDec(instrucao, 25, 30, 5);
-        int imm14 = binParaDec(instrucao, 1, 4, 1);
+        int imm14 = binParaDec(instrucao, 8, 11, 1);
         int imm11 = binParaDec(instrucao, 7, 7, 11);
 
-        int imm = imm12 | imm11 | imm510 || imm14;
+        int imm = imm12 | imm11 | imm510 | imm14;
+
+        immNegativo(imm, 12);
 
         int f3 = binParaDec(instrucao, 12, 14, 0);
 

@@ -46,6 +46,7 @@ class DecodificadorDeInstrucao {
 
     private:
         static int binParaDec(string instrucao, int inicio, int fim, int maskstart);
+        static void immNegativo(int &imm, int j);
 };
 
 #endif
